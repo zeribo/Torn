@@ -1,16 +1,15 @@
-const {TronWeb} = require("tronweb");
 const prisma = require("../db");
+const { defaultTronWeb } = require('../utils/tron');
 
-const tronWeb = new TronWeb({
-  fullHost: "https://api.trongrid.io",
-  headers: { "TRON-PRO-API-KEY": process.env.TRON_API_KEY },
-});
 
 async function getBlockFromTron(number) {
-  const block = await tronWeb.trx.getBlockByNumber(number);
+  const block = await defaultTronWeb.trx.getBlockByNumber(number);
   return block;
 }
-
+async function getCurrentBlockFromTron() {
+  const block = await defaultTronWeb.trx.getCurrentBlock();
+  return block;
+}
 async function getAllBlocks() {
   const blocks = await prisma.block.findMany({
     orderBy: { number: "desc" },
@@ -22,7 +21,7 @@ async function getAllBlocks() {
 }
 
 async function saveBlockToDb(block) {
-  const { blockID, block_header, transactions } = block;
+  const { blockID, block_header, transactions = [] } = block; 
   const raw = block_header.raw_data;
 
   return prisma.block.create({
@@ -49,11 +48,20 @@ async function saveBlockToDb(block) {
         })),
       },
     },
-  })
+  });
+}
+
+async function checkIfBlockExists(blockID) {
+  const block = await prisma.block.findUnique({
+    where: { id: blockID },
+  });
+  return !!block;
 }
 
 module.exports = {
   getAllBlocks,
+  getCurrentBlockFromTron,
   getBlockFromTron,
   saveBlockToDb,
+  checkIfBlockExists,
 };

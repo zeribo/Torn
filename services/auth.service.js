@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const prisma = require("../db");
-const {TronWeb} = require('tronweb');
+const { defaultTronWeb, getUserTronWeb } = require('../utils/tron');
 require('dotenv').config();
 
 const JWT_SECRET = process.env.JWT_SECRET
@@ -13,12 +13,8 @@ async function register(email, password) {
   if (existingUser) {
     throw new Error('Email уже зарегистрирован');
   }
-  const tronWeb = new TronWeb({
-  fullHost: 'https://nile.trongrid.io',
-  headers: { "TRON-PRO-API-KEY": process.env.TRON_API_KEY },
-  privateKey: "01"
-});
- const account = await tronWeb.createAccount();
+  
+ const account = await defaultTronWeb.createAccount();
   const adress= account.address.base58;
   const privateKey= account.privateKey;
   const passwordHash = await bcrypt.hash(password, 10);

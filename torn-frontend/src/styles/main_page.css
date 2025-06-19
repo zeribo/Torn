@@ -1,0 +1,60 @@
+
+/* Collapse into a clean grid */
+table.w-full {
+  border-collapse: collapse;
+}
+
+/* Remove all left/right borders */
+table.w-full th,
+table.w-full td {
+  border-left: none !important;
+  border-right: none !important;
+}
+
+/* Ensure horizontal borders stay */
+/* Header bottom border */
+table.w-full thead th {
+    border-top: 1px solid #E6E7E9;
+    border-bottom: 1px solid #E6E7E9; 
+}
+
+/* Row separator */
+table.w-full tbody tr + tr td {
+  border-top: 1px solid #E6E7E9;
+}
+
+
+
+.table-container {
+  width: 100%;              /* full width of its parent */
+  max-width: 1200px;        /* caps its maximum width */
+  margin: 0 auto;           /* centers it */
+  padding: 16px;            /* inner spacing */
+  background: white;      /* optional background */
+  border-radius: 8px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;   
+  
+  padding-top: 100px;
+
+}
+/* Make the table slightly smaller */
+.table-container table {
+  width: 90%;               /* 90% of the container’s width */
+  margin: 0 auto;
+         /* center the table inside */
+}
+
+
+.top-row {
+    background-color: #F0F3F4;
+    color: #636363;
+}
+    
+
+body {
+    background-color: #F0F3F4;
+}
+
+.block-rows:hover {
+  background-color: #F0F3F4;
+}

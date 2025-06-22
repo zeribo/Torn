@@ -58,3 +58,36 @@ body {
 .block-rows:hover {
   background-color: #F0F3F4;
 }
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 24px;
+}
+
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+
+.logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+
+}
+
+
+main.p-6 {
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+}

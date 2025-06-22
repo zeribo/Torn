@@ -1,0 +1,51 @@
+/* block_details.css */
+
+.block-details-container {
+  padding: 24px;
+  font-family: Arial, sans-serif;
+  color: #171717;
+  background-color: #ffffff;
+}
+
+.block-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.block-info {
+  margin-bottom: 8px;
+}
+
+.transactions-header {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.transaction-list {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.transaction-item {
+  margin-bottom: 6px;
+}
+
+.back-button {
+  margin-top: 32px;
+  display: inline-block;
+  background-color: #3b82f6; /* Tailwind's blue-500 */
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.back-button:hover {
+  background-color: #2563eb; /* Tailwind's blue-600 */
+}
